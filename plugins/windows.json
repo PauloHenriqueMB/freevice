@@ -1,0 +1,39 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "IonicGeolocationDemo"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "IonicGeolocationDemo"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "IonicGeolocationDemo"
+        },
+        "cordova-plugin-gpslocation": {
+            "PACKAGE_NAME": "IonicGeolocationDemo"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "IonicGeolocationDemo"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "IonicGeolocationDemo"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "IonicGeolocationDemo"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "IonicGeolocationDemo"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "IonicGeolocationDemo"
+        }
+    },
+    "dependent_plugins": {}
+}

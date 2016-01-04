@@ -1,0 +1,39 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "{d7fcb690-b0c4-11e5-a223-af6876cca0fb}"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "{d7fcb690-b0c4-11e5-a223-af6876cca0fb}"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "{d7fcb690-b0c4-11e5-a223-af6876cca0fb}"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "{d7fcb690-b0c4-11e5-a223-af6876cca0fb}"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "{d7fcb690-b0c4-11e5-a223-af6876cca0fb}"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "{d7fcb690-b0c4-11e5-a223-af6876cca0fb}"
+        },
+        "cordova-plugin-gpslocation": {
+            "PACKAGE_NAME": "{d7fcb690-b0c4-11e5-a223-af6876cca0fb}"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "{d7fcb690-b0c4-11e5-a223-af6876cca0fb}"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "{d7fcb690-b0c4-11e5-a223-af6876cca0fb}"
+        }
+    },
+    "dependent_plugins": {}
+}

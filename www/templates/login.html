@@ -1,0 +1,26 @@
+<ion-view hide-nav-bar="true" class="frmLogin">
+  <ion-content>
+    <div class="grid">
+      <!-- LOGO !-->
+      <img src="img/logo.png"/ class="logo">
+      <!-- Fim LOGO !-->
+
+      <!-- Verificar se é técnico !-->
+      <ul class="list">
+        <li class="item item-checkbox checkbox-balanced light">
+           <label class="checkbox">
+             <input type="checkbox" ng-model="checkTec" ng-init="checkTec=false">
+           </label>
+           <p>Sou um técnico</p>
+        </li>
+      </ul>
+      <!-- Fim Verificação !-->
+
+      <button class="button" ng-click="setLocation(locationSelected); login(checkTec); setUserType(checkTec);">Login</button>
+
+      <hr>
+
+      <p class="termo"><a href="#">Termos de uso do tecFinder</a></p>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>tecFinder</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+
+    <script src="js/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+    <script src="js/controllers/LoginCtrl.js"></script>
+    <script src="js/controllers/ChatDetailCtrl.js"></script>
+    <script src="js/controllers/ChatCtrl.js"></script>
+    <script src="js/controllers/MapCtrl.js"></script>
+    <script src="js/controllers/UserCtrl.js"></script>
+
+    <script src="js/services/Marker.js"></script>
+    <script src="js/services/CurrentPosition.js"></script>
+    <script src="js/services.js"></script>
+</head>
+  <body ng-app="desksolution" class="platform-android platform-cordova platform-webview">
+
+    <ion-nav-bar class="bar-light" hide-nav-bar="true">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <!-- tabs will be rendered here !-->
+    <ion-nav-view></ion-nav-view>
+
+ <!-- Google Maps async call !-->
+    <script type="text/javascript">
+        var map;
+
+        function initMap() {
+            //getPosition();
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8
+            });
+        }
+
+        function getPosition(){
+            window.navigator.geolocation.getCurrentPosition(function(pos){
+                alert('Success callback called! :)');
+            }, function(error){
+                alert(error.message);
+            }, {timeout: 10000, enableHighAccuracy: true});
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA07iB6tj1HzEwiBu2KvZuou0U0A-E5_8I&callback=initMap">
+      </script>
+  </body>
+</html>

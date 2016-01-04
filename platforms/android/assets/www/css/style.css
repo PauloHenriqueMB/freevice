@@ -1,0 +1,54 @@
+.scroll{height: 100%;}
+
+/*Login*/
+.grid{position: absolute;top: 0; bottom: 0;left: 0; right: 0;margin: auto;height: 240px;width: 95%;}
+
+.frmLogin{background-image: url('../img/fundo.jpg');background-size: cover;text-align: center;}
+
+.frmLogin .logo{margin-bottom: 10px;}
+
+.frmLogin .item, .frmLogin .button{border-radius: 5px;width: 100%;}
+
+.frmLogin .button{background-color: #FF5252;color: #fff;text-transform: uppercase;}
+
+.frmLogin .button:hover{color: #f2f2f2;}
+
+.frmLogin hr{height: 3px;border: none;background: #fff;border-radius: 5px;margin-top: 15px;}
+
+.frmLogin .checkbox-balanced input:before, .checkbox-balanced .checkbox-icon:before{border-color: #FF5252;color: red;}
+
+.frmLogin .checkbox-balanced input:checked:before, .checkbox-balanced input:checked + .checkbox-icon:before{background-color: #FF5252;color: red;}
+
+.frmLogin .termo a{color: #fff;font-size: 16px;}
+
+.list li{color: #000;text-align: left;}
+
+
+/* MAP */
+#map{ width: 100%; height: 100%; }
+
+.tabs-light > .tabs, .tabs.tabs-light{background-color: #FF5252 !important;}
+.tabs-color-assertive .tab-item{color: #fff !important;}
+
+.username{color: #FF5252 !important;font-weight: 600;}
+.data{float: right;}
+
+/*@Overwriter CSS*/
+.overflow-scroll{overflow-y:hidden;}
+
+.item{border-bottom:1px solid #E3E3E3;}
+
+.bar.bar-light{background-color: #FF5252;}
+
+.bar.bar-light .title{color: #fff;}
+
+[nav-bar-transition="ios"] .title, [nav-bar-transition="ios"] .buttons, [nav-bar-transition="ios"] .back-text{text-align: left;}
+
+
+/*Detalhes do Chat [Parte Interna]*/
+.chatInterno{background-color: red !important;}
+.buttonBack{color: #fff !important;margin-top: 5px;}
+.chat-detail > .item{border: none;}
+.chatMessage{background: #f3ffe8;border-radius: 30px 30px 30px 30px;position: relative;padding: 10px 10px 10px 10px;box-shadow: 1px 1px 1px #bfbfbf;}
+.chatMessageFromMe{background: #f8f8f8;border-radius: 30px 30px 30px 30px;position: relative;padding: 10px 10px 10px 10px;box-shadow: 1px 1px 1px #bfbfbf;}
+
