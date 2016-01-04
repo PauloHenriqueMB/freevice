@@ -1,4 +1,4 @@
-var App = angular.module('desksolution', ['ionic', 'firebase', 'ngCordova']);
+var App = angular.module('freevice', ['ionic', 'firebase', 'ngCordova']);
 
 App.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

@@ -1,7 +1,7 @@
 angular
-	.module('desksolution')
+	.module('freevice')
 
-.controller('ChatCtrl', function($scope, $firebase, $user, Alerta, $tecnico, $state, $firebaseObject, LastMessage){
+.controller('ChatCtrl', function($scope, $firebase, $user, Alerta, Worker, $state, $firebaseObject){
   $scope.nome = $user.get('userData.nome');
 	$scope.profilePic = $user.get('userData.foto');
 	$scope.userId = $user.get('userData.id');
@@ -18,7 +18,7 @@ angular
 
 	$scope.selectChat = function(user){
 		console.log(user);
-		$tecnico.setSelectedTecnico(user);
+		Worker.setSelectedTecnico(user);
 		$state.go('chat-detail', {
 			chatId: user.id
 		})

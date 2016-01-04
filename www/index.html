@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>tecFinder</title>
+    <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -30,9 +30,13 @@
 
     <script src="js/services/Marker.js"></script>
     <script src="js/services/CurrentPosition.js"></script>
-    <script src="js/services.js"></script>
+    <script src="js/services/Alert.js"></script>
+    <script src="js/services/Chats.js"></script>
+    <script src="js/services/User.js"></script>
+    <script src="js/services/Worker.js"></script>
+    <script src="js/services/Auth.js"></script>
 </head>
-  <body ng-app="desksolution">
+  <body ng-app="freevice">
 
     <ion-nav-bar class="bar-light" hide-nav-bar="true">
       <ion-nav-back-button>
@@ -47,19 +51,10 @@
         var map;
 
         function initMap() {
-            //getPosition();
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: -34.397, lng: 150.644},
                 zoom: 8
             });
-        }
-
-        function getPosition(){
-            window.navigator.geolocation.getCurrentPosition(function(pos){
-                alert('Success callback called! :)');
-            }, function(error){
-                alert(error.message);
-            }, {timeout: 10000, enableHighAccuracy: true});
         }
     </script>
     <script async defer

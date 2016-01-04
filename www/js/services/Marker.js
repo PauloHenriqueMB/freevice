@@ -1,6 +1,6 @@
-var app = angular.module('desksolution');
+var app = angular.module('freevice');
 
-app.factory('Marker', function($TecnicoInfo, $user){
+app.factory('Marker', function(Worker, $user){
   return{
     createMarker: function(user, map){
         var markerPos = new google.maps.LatLng(user.location.lat, user.location.lng);
@@ -15,7 +15,7 @@ app.factory('Marker', function($TecnicoInfo, $user){
 
     onClick: function(marker, user){
         google.maps.event.addListener(marker, 'click', function(){
-            $TecnicoInfo.showPopup(user);
+            Worker.showInfoPopup(user);
         });
     }
   }

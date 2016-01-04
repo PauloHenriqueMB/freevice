@@ -1,4 +1,4 @@
-var app = angular.module('desksolution');
+var app = angular.module('freevice');
 
 app.factory('$CurrentPosition', function($cordovaGeolocation, Alerta, $user){
   var location = new Object();

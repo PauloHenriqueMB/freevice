@@ -1,13 +1,13 @@
 angular
-	.module('desksolution')
+	.module('freevice')
 
-.controller('ChatDetailCtrl', function($scope, $user, $firebase, $tecnico, $firebaseObject, $timeout, $stateParams, $ionicScrollDelegate){
+.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $firebaseObject, $timeout, $stateParams, $ionicScrollDelegate){
   var ref = new Firebase('https://desk-solution.firebaseio.com/chats');
 	var userId = $user.get('userData.id');
 	var chatId = $stateParams.chatId;
 	var userName = $user.get('userData.nome');
 	var userFoto = $user.get('userData.foto');
-	var tecnico = $tecnico.getSelectedTecnico();
+	var tecnico = Worker.getSelectedTecnico();
 
 	$scope.isTecnico = $user.get('userData.userType');
 	$scope.username = userName;
@@ -25,7 +25,7 @@ angular
 	/* A cada mensagem recebida, a pagina é rolada ao fim. */
 	sync.on('child_added', function(data){
 		$timeout(function() {
-				$ionicScrollDelegate.scrollBottom();
+			$ionicScrollDelegate.scrollBottom();
 		});
 	});
 
@@ -34,22 +34,6 @@ angular
 	syncObject.$bindTo($scope, 'chats');
 
 	var ref = new Firebase('https://desk-solution.firebaseio.com/users/' + 'facebook:' + chatId);
-
-	$scope.sendLike = function(){
-			var user_to = ref.child('likes');
-			user_to.transaction(function(likes){
-				return likes+1;
-			});
-			console.log('like enviado');
-	};
-
-	$scope.sendDeslike = function(){
-		var user_to = ref.child('deslikes');
-		user_to.transaction(function(deslikes){
-			return deslikes+1;
-		});
-		console.log('deslike enviado');
-	};
 
 	$scope.sendMessage = function(msg){
 		if(msg){

@@ -1,4 +1,4 @@
-angular.module('desksolution')
+angular.module('freevice')
 .controller('MapCtrl', function($scope, $state, $user, $firebase, Marker, $cordovaGeolocation, $ionicLoading, $CurrentPosition){
   //var isTec = $user.get('userData.userType');
 

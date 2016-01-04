@@ -1,7 +1,7 @@
 angular
-	.module('desksolution')
+	.module('freevice')
 
-.controller('LoginCtrl', function($scope, Auth, $location, $firebase, $user, Alerta, $tecnico){
+.controller('LoginCtrl', function($scope, Auth, $location, $firebase, $user, Alerta, Worker){
   var refClients = new Firebase('https://desk-solution.firebaseio.com/users/clients');
   var refWorkers = new Firebase('https://desk-solution.firebaseio.com/users/workers');
   var currlocation = new Object();
@@ -24,7 +24,7 @@ angular
       currlocation.lat = pos.coords.latitude;
       currlocation.lng = pos.coords.longitude;
     }, function(error){
-      alert('Ops, houve um erro!. ' + error.message + '\nContacte nossa equipe de desenvolvimento.');
+      alert('Ops, houve um erro!. ' + error.message + '\nVoce deve ativar o seu GPS. Caso o erro persista contacte nossa equipe de desenvolvimento.');
     }, opt);
     
   }
@@ -40,7 +40,7 @@ angular
         if(tec == true){ 
           refClients.child(authData.uid).remove();
           refWorkers.child(authData.uid).update({
-            tecnico: $user.get('userData.userType'), //Tecnico ou não?
+            worker: $user.get('userData.userType'), //Tecnico ou não?
             id: $user.getId(authData.uid), // ID do google, somente a ID.
             foto: authData.google.profileImageURL, //Imagem do perfil do google
             provider: authData.provider, //Provider é o google.
