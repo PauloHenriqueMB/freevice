@@ -1,2 +1,2 @@
-# IonicGeolocationDemo
-This is Ionic Framework Google Maps demo application
+# Freevice 
+This is Ionic Framework application
