@@ -17,19 +17,20 @@ angular
     }
   });
 
-  var getPosition = function(){
+  var setLocation = function(ref, uid){
     var opt = {/*timeout: 30000,*/ enableHighAccuracy: false/*, maximumAge: 10000*/};
     navigator.geolocation.getCurrentPosition(function(pos){
       //alert(pos.coords.latitude + ', ' + pos.coords.longitude);
       currlocation.lat = pos.coords.latitude;
       currlocation.lng = pos.coords.longitude;
+
+      ref.child(uid).update({ location: currlocation });
+
     }, function(error){
       alert('Ops, houve um erro!. ' + error.message + '\nVoce deve ativar o seu GPS. Caso o erro persista contacte nossa equipe de desenvolvimento.');
     }, opt);
     
   }
-
-  getPosition();
 
   $scope.login = function(tec)
   {
@@ -44,9 +45,9 @@ angular
             id: $user.getId(authData.uid), // ID do google, somente a ID.
             foto: authData.google.profileImageURL, //Imagem do perfil do google
             provider: authData.provider, //Provider é o google.
-            name: authData.google.displayName, //Nome do perfil do google
-            location: currlocation
+            name: authData.google.displayName //Nome do perfil do google
           });
+          setLocation(refWorkers, authData.uid);
         }
         //Client
         else{
@@ -58,6 +59,7 @@ angular
             name: authData.google.displayName, //Nome do perfil do google
             location: currlocation
           });
+          setLocation(refClients, authData.uid);
         }
         //Salva no localStorage a localização do usuario.
         $user.set('userData.location', currlocation);
@@ -65,5 +67,5 @@ angular
         alert(error);
         Alerta.showAlertRedirect(error, '/login');
       });
-  };
+  };  
 });
