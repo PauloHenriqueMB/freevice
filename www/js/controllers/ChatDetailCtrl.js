@@ -36,33 +36,40 @@ angular
 	var ref = new Firebase('https://desk-solution.firebaseio.com/users/' + 'facebook:' + chatId);
 
 	$scope.sendMessage = function(msg){
+        var now = new Date();
+        var todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+        
+        var date = todayUTC.toISOString().slice(0, 10).replace(/-/g, '-');
+        
 		if(msg){
 			sync.push({
 				from: userName,
 				to: chatId,
 				message: msg,
-				foto: userFoto
+                date: date
 			});
 
 			sync2.push({
 				from: userName,
 				to: chatId,
 				message: msg,
-				foto: userFoto
+				date: date
 			});
 
 			chatInfo.update({
 				id: tecnico.id,
 				name: tecnico.name,
 				foto: tecnico.foto,
-				lmessage: msg
+				lmessage: msg,
+                date: date
 			});
 
 			chatInfo2.update({
 				id: userId,
 				name: userName,
 				foto: userFoto,
-				lmessage: msg
+				lmessage: msg,
+                date: date
 			});
 
 			delete $scope.textMessage;
