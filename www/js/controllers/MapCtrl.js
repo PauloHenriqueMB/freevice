@@ -1,7 +1,6 @@
 angular.module('freevice')
-.controller('MapCtrl', function($scope, $state, $user, $firebase, Marker, $cordovaGeolocation, $ionicLoading, $CurrentPosition){
+.controller('MapCtrl', function($scope, $state, $user, Worker, $firebase, Marker, $cordovaGeolocation, $ionicLoading, $CurrentPosition){
   //var isTec = $user.get('userData.userType');
-
   var map;
   var ref = new Firebase('https://desk-solution.firebaseio.com/users/workers/');
   var userId = $user.get('userData.id');
@@ -13,7 +12,7 @@ angular.module('freevice')
 
       window.navigator.geolocation.getCurrentPosition(function (pos) {
           $ionicLoading.show({
-              template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Estamos pegando sua localização, isso não deve demorar muito.'
+              template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Estamos pegando sua localizaï¿½ï¿½o, isso nï¿½o deve demorar muito.'
           });
 
           var latlng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
@@ -34,7 +33,10 @@ angular.module('freevice')
                   console.log(obj);
 
                   marker = Marker.createMarker(obj, map);
-                  Marker.onClick(marker, obj);
+                  
+                  google.maps.event.addListener(marker, 'click', function(){
+                      Worker.showInfo(map, marker, obj);
+                  });
               });
           });
 

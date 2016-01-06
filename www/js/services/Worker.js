@@ -4,23 +4,20 @@ app.factory('Worker', function($firebase, $state, $ionicPopup){
   var ref = new Firebase('https://desk-solution.firebaseio.com/users');
   var tecnicos = [];
   var selectedTecnico = {};
-
+  
   return{
-    showInfoPopup: function(tecnico){
-      var windowPopup = $ionicPopup.show({
-        title: tecnico.name,
-        subTitle: 'Av. Rondon Pacheco, 277, Uberlândia, Minas Gerais',
-        buttons:[
-          {text: 'Voltar', type: 'button-assertive'},
-          {
-            text: 'Chat',
-            type: 'button-positive',
-            onTap: function(e){
-              console.log('Tapped.');
-            }
-          }
-        ]
-      });
+    showInfo: function(map, marker, tecnico){
+        var contentString = 
+        '<div class="infoWindowContent">'+
+            '<img class="photoInfoWindow" src="' + tecnico.foto + '"/>' +
+            '<p>Nome: ' + tecnico.name + '</p>' +
+        '</div>';  
+        
+        var infoWindow = new google.maps.InfoWindow({ 
+            content: contentString 
+        });
+        
+        infoWindow.open(map, marker);    
     },
     setTecnicos: function(data){ tecnicos = data; },
       getTecnicos: function(){
@@ -50,18 +47,6 @@ app.factory('Worker', function($firebase, $state, $ionicPopup){
         });
       },
       getSelectedTecnico: function(){ return selectedTecnico; },
-      getLocation: function(){
-        var options = {timeout: 10000, enableHighAccuracy: true};
-        var location = {lat: 0.0000, lng: 0.00000};
-        /*$cordovaGeolocation.getCurrentPosition(options).then(function(pos){
-            var position = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-            var obj = {lat: position.lat(), lng: position.lng()};
-            console.log(obj);
-            location.lat = obj.lat;
-            location.lng = obj.lng;
-        });
-        return location;*/
-      },
       Tecnicos: tecnicos
   }
 });

@@ -11,12 +11,6 @@ app.factory('Marker', function(Worker, $user){
         });
 
         return marker;
-    },
-
-    onClick: function(marker, user){
-        google.maps.event.addListener(marker, 'click', function(){
-            Worker.showInfoPopup(user);
-        });
     }
   }
 
