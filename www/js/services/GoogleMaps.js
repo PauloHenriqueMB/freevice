@@ -50,7 +50,7 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, $ioni
         var infoWindow = new google.maps.InfoWindow({content: contentString});
         
         //Suposto bug aqui.
-        google.maps.event.addListener(marker, 'click', function(){
+        google.maps.event.addDomListener(marker, 'click', function(){
            alert('CLICOUUUU');
            infoWindow.open(map, marker); 
         });
