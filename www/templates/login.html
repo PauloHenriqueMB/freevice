@@ -1,26 +1,18 @@
 <ion-view hide-nav-bar="true" class="frmLogin">
   <ion-content>
     <div class="grid">
-      <!-- LOGO !-->
-      <img src="img/logo.png"/ class="logo">
-      <!-- Fim LOGO !-->
-
-      <!-- Verificar se é técnico !-->
+      <h1 class="logo">freevice</h1>
+      <!-- Checkbox prestador de serviço !-->
       <ul class="list">
-        <li class="item item-checkbox checkbox-balanced light">
+        <li class="checkPrestador item item-checkbox checkbox-balanced light">
            <label class="checkbox">
              <input type="checkbox" ng-model="checkTec" ng-init="checkTec=false">
            </label>
-           <p>Sou um técnico</p>
+           <p>Eu sou um prestador de serviço</p>
         </li>
       </ul>
       <!-- Fim Verificação !-->
-
-      <button class="button" ng-click="setLocation(locationSelected); login(checkTec); setUserType(checkTec);">Login</button>
-
-      <hr>
-
-      <p class="termo"><a href="#">Termos de uso do tecFinder</a></p>
+      <button class="botaoLogin button" ng-click="setLocation(locationSelected); login(checkTec); setUserType(checkTec);">Login</button>
     </div>
   </ion-content>
 </ion-view>
