@@ -27,7 +27,8 @@
     <script src="js/controllers/ChatCtrl.js"></script>
     <script src="js/controllers/MapCtrl.js"></script>
     <script src="js/controllers/UserCtrl.js"></script>
-
+    
+    <script src="js/services/GoogleMaps.js"></script>
     <script src="js/services/Marker.js"></script>
     <script src="js/services/CurrentPosition.js"></script>
     <script src="js/services/Alert.js"></script>
@@ -46,19 +47,6 @@
     <!-- tabs will be rendered here !-->
     <ion-nav-view></ion-nav-view>
 
- <!-- Google Maps async call !-->
-    <script type="text/javascript">
-        var map;
 
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 8
-            });
-        }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA07iB6tj1HzEwiBu2KvZuou0U0A-E5_8I&callback=initMap">
-      </script>
   </body>
 </html>

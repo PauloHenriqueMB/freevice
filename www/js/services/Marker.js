@@ -9,7 +9,6 @@ app.factory('Marker', function(Worker, $user){
           animation: google.maps.Animation.DROP,
           position: markerPos
         });
-
         return marker;
     }
   }

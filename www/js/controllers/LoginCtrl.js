@@ -13,7 +13,7 @@ angular
       $user.set('userData.id', $user.getId(authData.uid));
       $user.set('userData.location', currlocation);
 
-      $location.path('tab/chat');
+      $location.path('tab/tecnicos');
     }
   });
 

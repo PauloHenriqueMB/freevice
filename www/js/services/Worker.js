@@ -6,19 +6,6 @@ app.factory('Worker', function($firebase, $state, $ionicPopup){
   var selectedTecnico = {};
   
   return{
-    showInfo: function(map, marker, tecnico){
-        var contentString = 
-        '<div class="infoWindowContent">'+
-            '<img class="photoInfoWindow" src="' + tecnico.foto + '"/>' +
-            '<p>Nome: ' + tecnico.name + '</p>' +
-        '</div>';  
-        
-        var infoWindow = new google.maps.InfoWindow({ 
-            content: contentString 
-        });
-        
-        infoWindow.open(map, marker);    
-    },
     setTecnicos: function(data){ tecnicos = data; },
       getTecnicos: function(){
         tecnicos = [];
