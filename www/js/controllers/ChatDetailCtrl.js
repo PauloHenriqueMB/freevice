@@ -33,8 +33,6 @@ angular
 	var syncObject = $firebaseObject(sync);
 	syncObject.$bindTo($scope, 'chats');
 
-	var ref = new Firebase('https://desk-solution.firebaseio.com/users/' + 'facebook:' + chatId);
-
 	$scope.sendMessage = function(msg){
         var now = new Date();
         var todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
