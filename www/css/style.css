@@ -79,22 +79,19 @@ p.usermsg{color: #4C4C4C !important;font-weight: 400;font-size: 14px;}
 .buttonBack{color: #fff !important;margin-top: 5px;}
 .chatMessage{
 	float:left;
-    background-color:#39c;
-    border-top:10px solid #39c;
-    border-left:10px solid #fff;
-    padding: 0 10px 10px 10px;
-}
-.chatMessage{
-	float:left;
-    background-color:#7DECAF;
-    border-top:10px solid #7DECAF;
+    background-color:#DEDEDE;
+    border-top:10px solid #DEDEDE;
     border-left:10px solid #fff;
     padding: 0 10px 10px 10px;
 }
 .chatMessageFromMe{
 	float:right;
-    background-color:#7DCEEC;
-    border-top:10px solid #7DCEEC;
+    background-color:#BFBFBF;
+    border-top:10px solid #BFBFBF;
     border-right:10px solid #fff;
     padding: 0 10px 10px 10px;
 }
+.chat-detail .item{
+	border: none;
+}
+.dark, a.dark{font-size: 14px;}
