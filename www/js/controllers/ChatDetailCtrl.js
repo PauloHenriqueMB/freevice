@@ -7,13 +7,12 @@ angular
 	var chatId = $stateParams.chatId;
 	var userName = $user.get('userData.nome');
 	var userFoto = $user.get('userData.foto');
-	var tecnico = Worker.getSelectedTecnico();
 
 	$scope.isTecnico = $user.get('userData.userType');
 	$scope.username = userName;
-	$scope.user_chat_name = tecnico.name;
-
-	console.log('sou um tecnico? ' + $scope.isTecnico);
+	
+    var worker = Worker.getSelectedWorker();
+    $scope.user_chat_name = worker.name;
 
 	var chatInfo = ref.child(userId).child($stateParams.chatId).child('chatInfo');
 	var chatInfo2 = ref.child($stateParams.chatId).child(userId).child('chatInfo');
@@ -55,9 +54,9 @@ angular
 			});
 
 			chatInfo.update({
-				id: tecnico.id,
-				name: tecnico.name,
-				foto: tecnico.foto,
+				id: worker.id,
+				name: worker.name,
+				foto: worker.foto,
 				lmessage: msg,
                 date: date
 			});

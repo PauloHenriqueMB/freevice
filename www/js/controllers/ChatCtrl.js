@@ -17,10 +17,9 @@ angular
 	obj.$bindTo($scope, 'chatMessages');
 
 	$scope.selectChat = function(user){
-		console.log(user);
-		Worker.setSelectedTecnico(user);
+		Worker.selectWorker(user);
 		$state.go('chat-detail', {
 			chatId: user.id
-		})
+		});
 	};
 });

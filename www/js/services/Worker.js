@@ -23,7 +23,7 @@ app.factory('Worker', function($firebase, $state, $ionicPopup){
         });
         return tecnicos;
       },
-      setSelectedTecnico: function(tecnico){ selectedTecnico = tecnico; },
+      selectWorker: function(tecnico){ selectedTecnico = tecnico; },
       getDataById: function(id){
         var facebookID = 'facebook:' + id;
 
@@ -33,7 +33,7 @@ app.factory('Worker', function($firebase, $state, $ionicPopup){
            return data.name;
         });
       },
-      getSelectedTecnico: function(){ return selectedTecnico; },
+      getSelectedWorker: function(){ return selectedTecnico; },
       Tecnicos: tecnicos
   }
 });

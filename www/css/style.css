@@ -49,6 +49,13 @@ h1.logo{color: #fff;}
 /* MAP */
 #map{ width: 100%; height: 100%; }
 
+/* Google Maps API */
+.gm-style-iw{
+    max-height: none !important;
+    max-width: none !important;
+    width: auto !important;
+}
+/* End Google Maps API */
 
 .tabs-color-assertive .tab-item{color: #fff !important;}
 

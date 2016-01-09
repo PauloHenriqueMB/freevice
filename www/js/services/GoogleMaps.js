@@ -1,6 +1,6 @@
 var app = angular.module('freevice');
 
-app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, $ionicLoading){
+app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worker, $ionicLoading, $state){
     var map = null;
     var ref = new Firebase('https://desk-solution.firebaseio.com/users/workers/');
       
@@ -11,7 +11,7 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, $ioni
             var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var mapOptions = {
               center: latlng,
-              zoom: 10,
+              zoom: 15,
               mapTypeId: google.maps.MapTypeId.ROADMAP  
             };
             
@@ -42,20 +42,30 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, $ioni
     }
     
     function addInfoWindow(marker, obj){
-        var contentString = 
-        '<div class="infoWindowContent">'+
-            '<img class="photoInfoWindow" src="' + obj.foto + '"/>' +
+        /*var contentString = 
+        '<div class="infoWindow">' +
+            '<div class="item-avatar">'+
+                '<img src="' + obj.foto + '"/>' +
+            '</div>' + 
             '<p>Nome: ' + obj.name + '</p>' +
-        '</div>';
+            '<button class="button button-balanced" onclick="alert(\"obj.name\")">Chat</button>' +
+        '</div>';*/
+
+        var contentString = '<button onclick="openChat(\'' + obj + '\')">Chat</button>';
         var infoWindow = new google.maps.InfoWindow({content: contentString});
-        
-        //Suposto bug aqui.
+
         google.maps.event.addDomListener(marker, 'click', function(){
-           alert('CLICOUUUU');
-           infoWindow.open(map, marker); 
+           infoWindow.open(map, marker);
         });
     }
     
+    function openChat(user){
+        Worker.selectWorker(user);
+        $state.go('chat-detail', {
+			chatId: user.id
+		});
+    }
+    function alertSimple() { alert('test'); }
     function enableMap(){
         $ionicLoading.hide();
     }
