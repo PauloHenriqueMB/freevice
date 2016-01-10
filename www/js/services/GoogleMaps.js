@@ -21,7 +21,6 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worke
             google.maps.event.addListenerOnce(map, 'idle', function(){
                //Load markers from user city
                loadMarkers();
-               
                enableMap(); 
             });
         }, function(error){
@@ -42,30 +41,25 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worke
     }
     
     function addInfoWindow(marker, obj){
-        /*var contentString = 
+        var contentString = 
         '<div class="infoWindow">' +
             '<div class="item-avatar">'+
                 '<img src="' + obj.foto + '"/>' +
             '</div>' + 
             '<p>Nome: ' + obj.name + '</p>' +
-            '<button class="button button-balanced" onclick="alert(\"obj.name\")">Chat</button>' +
-        '</div>';*/
-
-        var contentString = '<button onclick="openChat(\'' + obj + '\')">Chat</button>';
+            '<a class="positive" href="#/chats/'+ obj.id + '">Chat</a>' +
+        '</div>';
+        
         var infoWindow = new google.maps.InfoWindow({content: contentString});
 
         google.maps.event.addDomListener(marker, 'click', function(){
            infoWindow.open(map, marker);
+           
+           //Importante: dizer ao serviço Worker qual trabalhador foi selecionado.
+           Worker.selectWorker(obj);
         });
     }
     
-    function openChat(user){
-        Worker.selectWorker(user);
-        $state.go('chat-detail', {
-			chatId: user.id
-		});
-    }
-    function alertSimple() { alert('test'); }
     function enableMap(){
         $ionicLoading.hide();
     }

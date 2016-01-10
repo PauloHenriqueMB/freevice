@@ -1,8 +1,11 @@
-angular
-	.module('freevice')
+/*
+    Created by Amilson Junior.
+*/ 
 
-.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $firebaseObject, $timeout, $stateParams, $ionicScrollDelegate){
-  var ref = new Firebase('https://desk-solution.firebaseio.com/chats');
+var app = angular.module('freevice');
+
+app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $firebaseObject, $timeout, $stateParams, $ionicScrollDelegate){
+    var ref = new Firebase('https://desk-solution.firebaseio.com/chats');
 	var userId = $user.get('userData.id');
 	var chatId = $stateParams.chatId;
 	var userName = $user.get('userData.nome');

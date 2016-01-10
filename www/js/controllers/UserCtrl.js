@@ -1,7 +1,6 @@
-angular
-	.module('freevice')
+var app = angular.module('freevice');
 
-.controller('UserCtrl', function($scope, $window, $user, Auth, Alerta, $timeout, $ionicLoading, $ionicHistory){
+app.controller('UserCtrl', function($scope, $window, $user, Auth, Alerta, $timeout, $ionicLoading, $ionicHistory){
   var ref = new Firebase('https://desk-solution.firebaseio.com/users/');
 
 	$scope.user = {

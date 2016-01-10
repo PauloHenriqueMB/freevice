@@ -1,7 +1,6 @@
-angular
-	.module('freevice')
+var app = angular.module('freevice');
 
-.controller('ChatCtrl', function($scope, $firebase, $user, Alerta, Worker, $state, $firebaseObject){
+app.controller('ChatCtrl', function($scope, $firebase, $user, Alerta, Worker, $state, $firebaseObject){
   $scope.nome = $user.get('userData.nome');
 	$scope.profilePic = $user.get('userData.foto');
 	$scope.userId = $user.get('userData.id');

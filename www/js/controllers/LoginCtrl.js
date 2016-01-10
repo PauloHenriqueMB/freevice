@@ -1,7 +1,6 @@
-angular
-	.module('freevice')
+var app = angular.module('freevice');
 
-.controller('LoginCtrl', function($scope, Auth, $location, $firebase, $user, Alerta, Worker){
+app.controller('LoginCtrl', function($scope, Auth, $location, $firebase, $user, Alerta, Worker){
   var refClients = new Firebase('https://desk-solution.firebaseio.com/users/clients');
   var refWorkers = new Firebase('https://desk-solution.firebaseio.com/users/workers');
   var currlocation = new Object();
@@ -27,18 +26,18 @@ angular
       ref.child(uid).update({ location: currlocation });
 
     }, function(error){
-      alert('Ops, houve um erro!. ' + error.message + '\nVoce deve ativar o seu GPS. Caso o erro persista contacte nossa equipe de desenvolvimento.');
+      alert('Ops, houve um erro ao pegar sua localização!. ' + error.message + '\nVoce deve ativar o seu GPS. Caso o erro persista contacte nossa equipe de desenvolvimento.');
     }, opt);
     
   }
 
-  $scope.login = function(tec)
+  $scope.login = function(worker)
   {
-      $user.set('userData.userType', tec);
+      $user.set('userData.userType', worker);
 
       Auth.$authWithOAuthPopup("google").then(function(authData){
         //Worker
-        if(tec == true){ 
+        if(worker == true){ 
           refClients.child(authData.uid).remove();
           refWorkers.child(authData.uid).update({
             worker: $user.get('userData.userType'), //Tecnico ou não?

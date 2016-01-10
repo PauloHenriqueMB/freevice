@@ -9,7 +9,7 @@ app.factory('$CurrentPosition', function($cordovaGeolocation, Alerta, $user){
         location.lng = pos.coords.longitude;
         $user.set('userData.location', location);
     }, function (error) {
-        Alerta.show('deu erro tio' + error.message);
+        Alerta.show('Error' + error.message);
     }, { enableHighAccuracy: true });
   }
 
