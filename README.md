@@ -2,6 +2,7 @@
 Um aplicativo para achar trabalhadores autonomos mais próximo de você. O aplicativo conta com um chat aonde você poderá se comunicar com o trabalhador e/ou cliente.
 
 O que está por vir na versão beta que iremos lançar em breve (Fevereiro) na playstore:
+
     - Filtrar apenas autonomos da cidade do cliente.
     - Destaque para os mais bem avaliados.
     - Trabalhadores com alta taxa de negativação serão excluidos.
