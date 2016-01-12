@@ -1,4 +1,4 @@
-<ion-view view-title="<a href='#/tab/chat'><button class='buttonBack button button-icon icon ion-arrow-left-c'></button></a> {{user_chat_name}}">
+<ion-view view-title="<a href='#/tab/chat'><button class='buttonBack button button-icon icon ion-chevron-left'></button></a> {{user_chat_name}}">
     <ion-content overflow-scroll="false">
         <ion-list>
             <div class="chat-detail">
@@ -29,6 +29,6 @@
         <label class="item-input-wrapper">
             <input type="text" ng-model="textMessage" placeholder="Escreva sua mensagem...">
         </label>
-        <button ng-click="sendMessage(textMessage)" class="button button-icon icon ion-forward"></button>
+        <button ng-click="sendMessage(textMessage)" class="button button-outline button-positive">Enviar</button>
     </div>
 </ion-view>
