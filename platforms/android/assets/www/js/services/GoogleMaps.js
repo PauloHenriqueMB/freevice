@@ -1,10 +1,9 @@
 var app = angular.module('freevice');
 
-app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worker, $ionicLoading, $state){
+app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, $ionicLoading){
     var map = null;
     var ref = new Firebase('https://desk-solution.firebaseio.com/users/workers/');
-    var userLocation;
-    
+      
     function initMap(){
         var options = {timeout: 10000, enableHighAccuracy: true};
         
@@ -12,11 +11,9 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worke
             var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var mapOptions = {
               center: latlng,
-              zoom: 15,
+              zoom: 10,
               mapTypeId: google.maps.MapTypeId.ROADMAP  
             };
-            
-            userLocation = {lat: position.coords.latitude, lng: position.coords.longitude};
             
             map = new google.maps.Map(document.getElementById('map'), mapOptions);
             
@@ -24,6 +21,7 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worke
             google.maps.event.addListenerOnce(map, 'idle', function(){
                //Load markers from user city
                loadMarkers();
+               
                enableMap(); 
             });
         }, function(error){
@@ -33,17 +31,10 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worke
     
     function loadMarkers(){
         var marker = null;
-        //console.log('loading markers');
-        //console.log(userLocation);
-        
-        /*
-            Carregar apenas autonomos proximos a localização do usuario.!!!!
-        */
-        
+        console.log('loading markers');
         if(map != null || map != undefined){
-            ref.orderByChild('location').on('child_added', function(data){
+            ref.on('child_added', function(data){
                 var obj = data.val();
-                console.log(obj);
                 marker = Marker.createMarker(obj, map); 
                 addInfoWindow(marker, obj);
             });
@@ -52,21 +43,16 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worke
     
     function addInfoWindow(marker, obj){
         var contentString = 
-        '<div class="infoWindow">' +
-            '<div class="item-avatar">'+
-                '<img src="' + obj.foto + '"/>' +
-            '</div>' + 
+        '<div class="infoWindowContent">'+
+            '<img class="photoInfoWindow" src="' + obj.foto + '"/>' +
             '<p>Nome: ' + obj.name + '</p>' +
-            '<a class="positive" href="#/chats/'+ obj.id + '">Chat</a>' +
         '</div>';
-        
         var infoWindow = new google.maps.InfoWindow({content: contentString});
-
+        
+        //Suposto bug aqui.
         google.maps.event.addDomListener(marker, 'click', function(){
-           infoWindow.open(map, marker);
-           
-           //Importante: dizer ao serviço Worker qual trabalhador foi selecionado.
-           Worker.selectWorker(obj);
+           alert('CLICOUUUU');
+           infoWindow.open(map, marker); 
         });
     }
     
@@ -89,7 +75,6 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worke
         
         script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA07iB6tj1HzEwiBu2KvZuou0U0A-E5_8I&callback=mapInit';
         document.body.appendChild(script);
-
     }
     
     return{

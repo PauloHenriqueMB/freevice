@@ -1,6 +1,6 @@
 var App = angular.module('freevice', ['ionic', 'firebase', 'ngCordova']);
 
-App.run(function($ionicPlatform) {
+App.run(function($ionicPlatform, GoogleMaps) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -12,6 +12,7 @@ App.run(function($ionicPlatform) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+    //GoogleMaps.init();
   });
 });
 
@@ -65,7 +66,3 @@ App.config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
    if(ionic.Platform.isAndroid())
       $ionicConfigProvider.scrolling.jsScrolling(true);
 });
-
-function back(){
-
-}

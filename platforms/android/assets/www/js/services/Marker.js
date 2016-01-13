@@ -9,14 +9,7 @@ app.factory('Marker', function(Worker, $user){
           animation: google.maps.Animation.DROP,
           position: markerPos
         });
-
         return marker;
-    },
-
-    onClick: function(marker, user){
-        google.maps.event.addListener(marker, 'click', function(){
-            Worker.showInfoPopup(user);
-        });
     }
   }
 

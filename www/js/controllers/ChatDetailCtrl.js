@@ -1,7 +1,3 @@
-/*
-    Created by Amilson Junior.
-*/ 
-
 var app = angular.module('freevice');
 
 app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $firebaseObject, $timeout, $stateParams, $ionicScrollDelegate){

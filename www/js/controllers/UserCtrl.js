@@ -1,7 +1,7 @@
 var app = angular.module('freevice');
 
 app.controller('UserCtrl', function($scope, $window, $user, Auth, Alerta, $timeout, $ionicLoading, $ionicHistory){
-  var ref = new Firebase('https://desk-solution.firebaseio.com/users/');
+    var ref = new Firebase('https://desk-solution.firebaseio.com/users/');
 
 	$scope.user = {
 		 nome: $user.get('userData.nome'),

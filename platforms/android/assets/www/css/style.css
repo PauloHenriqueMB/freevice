@@ -1,3 +1,13 @@
+h1.logo{color: #fff;}
+.item p{color: #fff !important;font-size: 18px;}
+.checkPrestador{color: #fff;background-color: transparent;border:0;}
+.item-checkbox .checkbox{margin-top: -18px;}
+.checkbox input:before{border-radius: 0px !important;background-color: transparent;border:3px solid white !important;width: 25px !important;height: 25px !important;}
+.checkbox-balanced input:checked:before, .checkbox-balanced input:checked + .checkbox-icon:before{background-color: transparent;color: #fff;}
+.checkbox input:after, .checkbox-icon:after{top: 30%;left: 20%;}
+.botaoLogin,.botaologin:hover{width: 180px;height: 50px;border-radius: 0;background-color: #3271c6;color: #fff;font-size: 22px;}
+
+
 .scroll{height: 100%;}
 
 /*Login*/
@@ -5,21 +15,7 @@
 
 .frmLogin{background-image: url('../img/fundo.jpg');background-size: cover;text-align: center;}
 
-.frmLogin .logo{margin-bottom: 10px;}
 
-.frmLogin .item, .frmLogin .button{border-radius: 5px;width: 100%;}
-
-.frmLogin .button{background-color: #FF5252;color: #fff;text-transform: uppercase;}
-
-.frmLogin .button:hover{color: #f2f2f2;}
-
-.frmLogin hr{height: 3px;border: none;background: #fff;border-radius: 5px;margin-top: 15px;}
-
-.frmLogin .checkbox-balanced input:before, .checkbox-balanced .checkbox-icon:before{border-color: #FF5252;color: red;}
-
-.frmLogin .checkbox-balanced input:checked:before, .checkbox-balanced input:checked + .checkbox-icon:before{background-color: #FF5252;color: red;}
-
-.frmLogin .termo a{color: #fff;font-size: 16px;}
 
 .list li{color: #000;text-align: left;}
 
@@ -36,7 +32,6 @@
 /*@Overwriter CSS*/
 .overflow-scroll{overflow-y:hidden;}
 
-.item{border-bottom:1px solid #E3E3E3;}
 
 .bar.bar-light{background-color: #FF5252;}
 
