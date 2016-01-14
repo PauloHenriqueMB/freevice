@@ -1,6 +1,6 @@
 var app = angular.module('freevice');
 
-app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worker, $ionicLoading, $state){
+app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Marker, Worker, $ionicLoading, $state){
     var map = null;
     var ref = new Firebase('https://desk-solution.firebaseio.com/users/workers/');
     var userLocation;
@@ -12,18 +12,22 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worke
             var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var mapOptions = {
               center: latlng,
+              maxZoom:18,
+              minZoom:15,
               zoom: 15,
               mapTypeId: google.maps.MapTypeId.ROADMAP  
             };
             
             userLocation = {lat: position.coords.latitude, lng: position.coords.longitude};
             
+            GeoCoder.setGeoCoderCoords(userLocation.lat, userLocation.lng);
+            
             map = new google.maps.Map(document.getElementById('map'), mapOptions);
             
             //Wait until map is loaded.
             google.maps.event.addListenerOnce(map, 'idle', function(){
                //Load markers from user city
-               loadMarkers();
+               loadMarkers(userLocation);
                enableMap(); 
             });
         }, function(error){
@@ -31,17 +35,13 @@ app.factory('GoogleMaps', function($cordovaGeolocation, $firebase, Marker, Worke
         });
     }
     
-    function loadMarkers(){
+    function loadMarkers(location){
         var marker = null;
-        //console.log('loading markers');
-        //console.log(userLocation);
-        
-        /*
-            Carregar apenas autonomos proximos a localização do usuario.!!!!
-        */
+       
+        var city = GeoCoder.getCityName(location);
         
         if(map != null || map != undefined){
-            ref.orderByChild('location').on('child_added', function(data){
+            ref.orderByChild('city').equalTo(city).on('child_added', function(data){
                 var obj = data.val();
                 console.log(obj);
                 marker = Marker.createMarker(obj, map); 

@@ -1,16 +1,16 @@
 var app = angular.module('freevice');
 
-app.controller('LoginCtrl', function($scope, Auth, $location, $firebase, $user, Alerta, Worker){
+app.controller('LoginCtrl', function($scope, GeoCoder, Auth, $location, $firebase, $user, Alerta, Worker){
   var refClients = new Firebase('https://desk-solution.firebaseio.com/users/clients');
   var refWorkers = new Firebase('https://desk-solution.firebaseio.com/users/workers');
   var currlocation = new Object();
-
+  var cityName;
+  
   Auth.$onAuth(function(authData){
     if(authData != null){
       $user.set('userData.nome', authData.google.displayName);
       $user.set('userData.foto', authData.google.profileImageURL);
       $user.set('userData.id', $user.getId(authData.uid));
-      $user.set('userData.location', currlocation);
 
       $location.path('tab/tecnicos');
     }
@@ -22,7 +22,11 @@ app.controller('LoginCtrl', function($scope, Auth, $location, $firebase, $user, 
       //alert(pos.coords.latitude + ', ' + pos.coords.longitude);
       currlocation.lat = pos.coords.latitude;
       currlocation.lng = pos.coords.longitude;
-
+      
+      GeoCoder.setGeoCoderCoords(currlocation.lat, currlocation.lng);
+      console.log(GeoCoder.getCityName());
+      
+      ref.child(uid).update({ city: GeoCoder.getCityName() });
       ref.child(uid).update({ location: currlocation });
 
     }, function(error){
@@ -40,10 +44,8 @@ app.controller('LoginCtrl', function($scope, Auth, $location, $firebase, $user, 
         if(worker == true){ 
           refClients.child(authData.uid).remove();
           refWorkers.child(authData.uid).update({
-            worker: $user.get('userData.userType'), //Tecnico ou não?
             id: $user.getId(authData.uid), // ID do google, somente a ID.
-            foto: authData.google.profileImageURL, //Imagem do perfil do google
-            provider: authData.provider, //Provider é o google.
+            photo: authData.google.profileImageURL, //Imagem do perfil do google
             name: authData.google.displayName //Nome do perfil do google
           });
           setLocation(refWorkers, authData.uid);
@@ -53,8 +55,7 @@ app.controller('LoginCtrl', function($scope, Auth, $location, $firebase, $user, 
           refWorkers.child(authData.uid).remove();
           refClients.child(authData.uid).update({
             id: $user.getId(authData.uid), // ID do google, somente a ID.
-            foto: authData.google.profileImageURL, //Imagem do perfil do google
-            provider: authData.provider, //Provider é o google.
+            photo: authData.google.profileImageURL, //Imagem do perfil do google
             name: authData.google.displayName, //Nome do perfil do google
             location: currlocation
           });
