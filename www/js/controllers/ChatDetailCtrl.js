@@ -1,17 +1,17 @@
 var app = angular.module('freevice');
 
 app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $firebaseObject, $timeout, $stateParams, $ionicScrollDelegate){
-    var ref = new Firebase('https://desk-solution.firebaseio.com/chats');
-	var userId = $user.get('userData.id');
-	var chatId = $stateParams.chatId;
+    var ref      = new Firebase('https://desk-solution.firebaseio.com/chats');
+	var userId   = $user.get('userData.id');
+	var chatId   = $stateParams.chatId;
 	var userName = $user.get('userData.nome');
 	var userFoto = $user.get('userData.foto');
-
-	$scope.isTecnico = $user.get('userData.userType');
-	$scope.username = userName;
 	
-    var worker = Worker.getSelectedWorker();
-    $scope.user_chat_name = worker.name;
+	$scope.isTecnico = $user.get('userData.userType');
+	$scope.username  = userName;
+	
+	var worker = Worker.getSelectedWorker();
+	$scope.user_chat_name = worker.name;
 
 	var chatInfo = ref.child(userId).child($stateParams.chatId).child('chatInfo');
 	var chatInfo2 = ref.child($stateParams.chatId).child(userId).child('chatInfo');
@@ -34,7 +34,6 @@ app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $fir
 	$scope.sendMessage = function(msg){
         var now = new Date();
         var todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-        
         var date = todayUTC.toISOString().slice(0, 10).replace(/-/g, '-');
         
 		if(msg){
@@ -42,35 +41,35 @@ app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $fir
 				from: userName,
 				to: chatId,
 				message: msg,
-                date: date
+				date: date
 			});
-
+		
 			sync2.push({
 				from: userName,
 				to: chatId,
 				message: msg,
 				date: date
 			});
-
+		
 			chatInfo.update({
 				id: worker.id,
 				name: worker.name,
 				foto: worker.foto,
 				lmessage: msg,
-                date: date
+				date: date
 			});
-
+		
 			chatInfo2.update({
 				id: userId,
 				name: userName,
 				foto: userFoto,
 				lmessage: msg,
-                date: date
+				date: date
 			});
-
+		
 			delete $scope.textMessage;
 		}
-
+		
 		$timeout(function() {
 		    $ionicScrollDelegate.scrollBottom();
 		});
