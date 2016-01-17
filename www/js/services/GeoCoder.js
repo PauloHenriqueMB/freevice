@@ -16,12 +16,8 @@ app.factory('GeoCoder', function($firebase){
             } 
         });
     }
-    function getCityName(){
-       // console.log(cityName);
-        return cityName;
-    }
     return{
-        getCityName: getCityName,
+        getCityName: function(){ return cityName; },
         setGeoCoderCoords: setGeoCoderCoords
     }
 });

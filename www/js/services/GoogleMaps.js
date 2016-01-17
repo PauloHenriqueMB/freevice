@@ -35,12 +35,23 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
         });
     }
     
+    function createUserMarker(location){
+        var marker = null;
+        var user_coords = new Object();
+        
+        user_coords.location = location;
+         
+        marker = Marker.createMarker(user_coords, map);
+        userInfoWindow(marker);
+    }
+    
     function loadMarkers(location){
         var marker = null;
        
         var city = GeoCoder.getCityName(location);
         
         if(map != null || map != undefined){
+            createUserMarker(location);
             ref.orderByChild('city').equalTo(city).on('child_added', function(data){
                 var obj = data.val();
                 console.log(obj);
@@ -48,6 +59,15 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
                 addInfoWindow(marker, obj);
             });
         }
+    }
+    
+    function userInfoWindow(marker){
+        var contentString = '<h4>Você está aqui!</h4>';
+        var infoWindow = new google.maps.InfoWindow({content: contentString});
+        
+        google.maps.event.addDomListener(marker, 'click', function(){
+            infoWindow.open(map, marker);
+        });
     }
     
     function addInfoWindow(marker, obj){

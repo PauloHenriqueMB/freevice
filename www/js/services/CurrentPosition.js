@@ -17,7 +17,7 @@ app.factory('$CurrentPosition', function($cordovaGeolocation, Alerta, $user){
     return $user.get('userData.location');
   }
   return {
-    setPosition: function(){ setPosition(); },
-    getPosition: function(){ getPosition(); }
+    setPosition: setPosition,
+    getPosition: getPosition
   }
 });

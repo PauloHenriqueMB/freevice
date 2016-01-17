@@ -10,7 +10,7 @@ app.controller('LoginCtrl', function($scope, GeoCoder, Auth, $location, $firebas
     if(authData != null){
       $user.set('userData.nome', authData.google.displayName);
       $user.set('userData.foto', authData.google.profileImageURL);
-      $user.set('userData.id', $user.getId(authData.uid));
+      $user.set('userData.id', $user.getId(authData.uid, authData.provider));
 
       $location.path('tab/tecnicos');
     }
@@ -19,12 +19,11 @@ app.controller('LoginCtrl', function($scope, GeoCoder, Auth, $location, $firebas
   var setLocation = function(ref, uid){
     var opt = {/*timeout: 30000,*/ enableHighAccuracy: false/*, maximumAge: 10000*/};
     navigator.geolocation.getCurrentPosition(function(pos){
-      //alert(pos.coords.latitude + ', ' + pos.coords.longitude);
       currlocation.lat = pos.coords.latitude;
       currlocation.lng = pos.coords.longitude;
       
       GeoCoder.setGeoCoderCoords(currlocation.lat, currlocation.lng);
-      console.log(GeoCoder.getCityName());
+     // console.log(GeoCoder.getCityName());
       
       ref.child(uid).update({ city: GeoCoder.getCityName() });
       ref.child(uid).update({ location: currlocation });
@@ -44,9 +43,9 @@ app.controller('LoginCtrl', function($scope, GeoCoder, Auth, $location, $firebas
         if(worker == true){ 
           refClients.child(authData.uid).remove();
           refWorkers.child(authData.uid).update({
-            id: $user.getId(authData.uid), // ID do google, somente a ID.
-            photo: authData.google.profileImageURL, //Imagem do perfil do google
-            name: authData.google.displayName //Nome do perfil do google
+            id: $user.getId(authData.uid, authData.provider), 
+            photo: authData.google.profileImageURL, 
+            name: authData.google.displayName 
           });
           setLocation(refWorkers, authData.uid);
         }
@@ -54,9 +53,9 @@ app.controller('LoginCtrl', function($scope, GeoCoder, Auth, $location, $firebas
         else{
           refWorkers.child(authData.uid).remove();
           refClients.child(authData.uid).update({
-            id: $user.getId(authData.uid), // ID do google, somente a ID.
-            photo: authData.google.profileImageURL, //Imagem do perfil do google
-            name: authData.google.displayName, //Nome do perfil do google
+            id: $user.getId(authData.uid, authData.provider),
+            photo: authData.google.profileImageURL, 
+            name: authData.google.displayName,
             location: currlocation
           });
           setLocation(refClients, authData.uid);
