@@ -27,9 +27,20 @@ app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $fir
 		});
 	});
 
+	var msglimit = 15;
+
 	/* recebe mensagens em tempo real. */
-	var syncObject = $firebaseObject(sync);
+	var syncObject = $firebaseObject(sync.limitToLast(msglimit));
 	syncObject.$bindTo($scope, 'chats');
+
+	$scope.doRefresh = function(){
+		msglimit += 15;
+		syncObject = $firebaseObject(sync.limitToLast(msglimit));
+		syncObject.$bindTo($scope, 'chats');
+
+		$scope.$broadcast('scroll.refreshComplete');
+    	$scope.$apply();
+	}
 
 	$scope.sendMessage = function(msg){
         var now = new Date();

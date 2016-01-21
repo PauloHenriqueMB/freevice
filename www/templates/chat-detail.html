@@ -1,5 +1,7 @@
 <ion-view view-title="<a href='#/tab/chat'><button class='buttonBack button button-icon icon ion-chevron-left'></button></a> {{user_chat_name}}">
     <ion-content overflow-scroll="false">
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+        </ion-refresher>
         <ion-list>
             <div class="chat-detail">
                 <div class="item item-chat" ng-repeat="chat in chats">
