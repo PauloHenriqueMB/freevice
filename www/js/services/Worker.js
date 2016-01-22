@@ -33,6 +33,6 @@ app.factory('Worker', function($firebase, $state, $ionicPopup){
            return data.name;
         });
       },
-      getSelectedWorker: function(){ return selectedTecnico; }
+      getSelectedWorker: function(){ return selectedWorker; }
   }
 });
