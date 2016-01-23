@@ -99,7 +99,7 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
     }
     
     function loadGoogleMaps(){
-        $ionicLoading.show({template: 'Aguarde um momento! O mapa está sendo carregado.'});
+        $ionicLoading.show({template: 'Buscando profissionais na região...'});
         
         window.mapInit = function(){ initMap(); }
         

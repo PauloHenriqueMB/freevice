@@ -1,4 +1,4 @@
-<ion-view view-title="<a href='#/tab/chat'><button class='buttonBack button button-icon icon ion-chevron-left'></button></a> {{user_chat_name}}">
+<ion-view view-title="{{user_chat_name}}<br>{{user_chat_name}}">
     <ion-content overflow-scroll="false">
         <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
         </ion-refresher>
@@ -6,19 +6,15 @@
             <div class="chat-detail">
                 <div class="item item-chat" ng-repeat="chat in chats">
                     <div ng-if="chat.from === username && chat.message" class="chatMessageFromMe">
-                        <h4>
-                            <span class="dark item-text-wrap" ng-if="chat.from">Eu</span>
-                        </h4>
                         <p>
-                            <span class="dark item-text-wrap">{{chat.message}}</span>
+                            <span class="dark item-text-wrap">{{chat.message}}</span><br>
+                            <span class="dark item-text-wrap data">{{chat.date}}</span>
                         </p>
                     </div>
                     <div ng-if="chat.from !== username && chat.message" class="chatMessage">
-                        <h4>
-                            <span class="dark item-text-wrap" ng-if="chat.from">{{chat.from}}</span>
-                        </h4>
                         <p>
-                            <span class="dark item-text-wrap" ng-if="chat.message">{{chat.message}}</span>
+                            <span class="dark item-text-wrap" ng-if="chat.message">{{chat.message}}</span><br>
+                            <span class="dark item-text-wrap data">{{chat.date}}</span>
                         </p>
                     </div>
                 </div>

@@ -1,6 +1,5 @@
 h1.logo{color: #fff;}
 
-.item p{color: #fff !important;font-size: 18px;}
 
 .checkPrestador{color: #fff;background-color: transparent;border:0;}
 
@@ -27,14 +26,8 @@ h1.logo{color: #fff;}
 	font-size: 22px;
 }
 
-.tabs-light > .tabs, .tabs.tabs-light{background-color: #3165AB !important;}
 
-.tabs-striped.tabs-color-assertive .tab-item.tab-item-active, .tabs-striped.tabs-color-assertive .tab-item.active, 
-.tabs-striped.tabs-color-assertive .tab-item.activate{border-bottom:1px solid #5C8AD8 !important;}
 
-.item-avatar img{max-width: 50px !important;max-height: 50px !important;top: 13px !important;}
-
-.scroll{height: 100%;}
 
 /*Login*/
 .grid{position: absolute;top: 0; bottom: 0;left: 0; right: 0;margin: auto;height: 240px;width: 95%;}
@@ -65,40 +58,60 @@ h1.logo{color: #fff;}
 /*@Overwriter CSS*/
 .overflow-scroll{overflow-y:hidden;}
 
-
-.bar.bar-light{background-color: #FF5252;}
-
-.bar.bar-light .title{color: #fff;}
-
 [nav-bar-transition="ios"] .title, [nav-bar-transition="ios"] .buttons, [nav-bar-transition="ios"] .back-text{text-align: left;}
 
 
-/*Detalhes do Chat [Parte Interna]*/
+/******************************************[CSS Attualized 21/01/2016]***************************************************************/
+/*
+Design in Photoshop and: Matheus Vieira
+*/
+/*All Selector*/
+.scroll{height: 100%;background-color: #fdfdfd;}
 
-/*Lista de Chats*/
-.bar.bar-light{background-color: #3165AB !important;height: 50px;}
-.bar .title{line-height: 42px !important;margin: 4px 0px 4px 0px !important;}
-p.username{color: #4C4C4C !important;font-weight: 500;font-size: 16px;}
-span.data{color: #4C4C4C !important;font-weight: 500;font-size: 13px;}
-p.usermsg{color: #4C4C4C !important;font-weight: 400;font-size: 14px;}
+/*Tabs*/
+.tabs-light > .tabs, .tabs.tabs-light{background-color: #039be5 !important;height: 38pt;}
 
-/*Detalhes chat*/
-.buttonBack{color: #fff !important;margin-top: 5px;}
-.chatMessage{
-	float:left;
-    background-color:#DEDEDE;
-    border-top:10px solid #DEDEDE;
-    border-left:10px solid #fff;
-    padding: 0 10px 10px 10px;
+.tabs-icon-top > .tabs .tab-item, .tabs-icon-top.tabs .tab-item, .tabs-icon-bottom > .tabs .tab-item, .tabs-icon-bottom.tabs .tab-item{
+	font-size:11pt;
+	font-weight: 500;
+	line-height: 38pt;
+	text-transform: uppercase;
 }
-.chatMessageFromMe{
-	float:right;
-    background-color:#BFBFBF;
-    border-top:10px solid #BFBFBF;
-    border-right:10px solid #fff;
-    padding: 0 10px 10px 10px;
+
+.tabs-striped.tabs-color-assertive .tab-item.tab-item-active, .tabs-striped.tabs-color-assertive 
+.tab-item.active, .tabs-striped.tabs-color-assertive .tab-item.activate{
+	border-bottom: 4px solid #118eca !important;
 }
-.chat-detail .item{
-	border: none;
+
+.tabs-color-assertive .tab-item.tab-item-active, .tabs-color-assertive .tab-item.active, .tabs-color-assertive .tab-item.activated{
+	border-bottom: 4px solid #118eca !important;
 }
-.dark, a.dark{font-size: 14px;}
+
+/*Ext Chat*/
+
+.item-avatar{border: none;background-color: transparent;}
+
+.item-avatar img{width: 39px !important;height: 40px !important;}
+
+.item-avatar p{font-size: 12pt;color: #00141d !important;font-weight: 500;}
+
+.item-avatar p.usermsg,.item-avatar span{font-size: 9pt;font-weight: 400;}
+
+/*Int Chat*/
+.bar .back-button.hide, .bar .buttons .hide{color: #fff;display: inline;}
+
+.bar .title.title-left{color: #fff;font-weight: 700;text-transform: uppercase;font-size: 12pt;line-height: 38pt;margin-left: 50px;}
+
+.bar.bar-light{height: 38pt;background-color: #039be5;}
+
+.chat-detail{background-image: url('../img/fundo.png');background-size: cover;}
+
+.chat-detail > .item{border: none;background-color: transparent;color: #00141d;font-weight: 400;}
+
+.chat-detail .chatMessageFromMe, .chat-detail .chatMessage{font-size: 9pt;}
+
+.chat-detail .chatMessageFromMe{float: right;height: auto;background-color: #d6efe0;border-radius: 8px;padding: 5px 5px 5px 5px;}
+
+.chat-detail .chatMessage{float: left;height: auto;background-color: #fdfdfd;border-radius: 8px;padding: 5px 5px 5px 5px;}
+
+.chat-detail .data{font-size: 7pt;}

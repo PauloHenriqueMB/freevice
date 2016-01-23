@@ -9,6 +9,8 @@ app.controller('ChatCtrl', function($scope, $firebase, $user, Alerta, Worker, $s
 	$scope.username = userName;
 	$scope.chats = [];
 
+	
+
 	var ref = new Firebase('https://desk-solution.firebaseio.com/chats/');
 	var sync = ref.child($scope.userId);
 	var obj = $firebaseObject(sync);
