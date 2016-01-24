@@ -6,15 +6,15 @@ app.factory('Worker', function($firebase, $state, $ionicPopup){
   var selectedWorker = {};
   
   return{
-    setTecnicos: function(data){ workers = data; },
-      getTecnicos: function(){
+    setWorkers: function(data){ workers = data; },
+      getWorkers: function(){
         workers = [];
         ref.on('value', function(data){
-          var _tecnicos = data.val();
+          var _workers = data.val();
 
-          for(var x in _tecnicos){
+          for(var x in _workers){
             if(x.tecnico)
-              workers.push(_tecnicos[x]);
+              workers.push(_workers[x]);
           }
 
           console.log(workers);

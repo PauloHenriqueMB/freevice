@@ -61,7 +61,8 @@ app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $fir
 				message: msg,
 				date: date
 			});
-		
+		  
+            //Last message
 			chatInfo.update({
 				id: worker.id,
 				name: worker.name,
