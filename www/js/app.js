@@ -1,4 +1,4 @@
-var App = angular.module('freevice', ['ionic', 'firebase', 'ngCordova']);
+var App = angular.module('freevice', ['ionic', 'firebase', 'ngCordova', 'angularMoment']);
 
 App.run(function($ionicPlatform, GoogleMaps) {
   $ionicPlatform.ready(function() {

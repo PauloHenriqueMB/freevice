@@ -8,13 +8,13 @@
                     <div ng-if="chat.from === username && chat.message" class="chatMessageFromMe">
                         <p>
                             <span class="dark item-text-wrap">{{chat.message}}</span><br>
-                            <span class="dark item-text-wrap data">{{chat.date}}</span>
+                            <span class="dark item-text-wrap data">{{chat.date | calendar}}</span>
                         </p>
                     </div>
                     <div ng-if="chat.from !== username && chat.message" class="chatMessage">
                         <p>
                             <span class="dark item-text-wrap" ng-if="chat.message">{{chat.message}}</span><br>
-                            <span class="dark item-text-wrap data">{{chat.date}}</span>
+                            <span class="dark item-text-wrap data">{{chat.date | calendar}}</span>
                         </p>
                     </div>
                 </div>
