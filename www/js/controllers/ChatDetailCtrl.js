@@ -45,7 +45,7 @@ app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $fir
 	$scope.sendMessage = function(msg){
         var now = new Date();
         var todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-        var date = todayUTC.toISOString().slice(0, 10).replace(/-/g, '-');
+        var date = now.toString();
         
 		if(msg){
 			sync.push({
