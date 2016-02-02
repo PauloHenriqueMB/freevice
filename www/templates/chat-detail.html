@@ -1,14 +1,14 @@
-<ion-view view-title="{{user_chat_name}}<br>{{user_chat_name}}">
-    <ion-content overflow-scroll="false">
-        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+<ion-view view-title="{{user_chat_name}}" class="chat-interno">
+    <ion-content>
+        <ion-refresher pulling-text="Mensagens antigas" on-refresh="doRefresh()" class="refresh">
         </ion-refresher>
         <ion-list>
             <div class="chat-detail">
                 <div class="item item-chat" ng-repeat="chat in chats">
                     <div ng-if="chat.from === username && chat.message" class="chatMessageFromMe">
                         <p>
-                            <span class="dark item-text-wrap">{{chat.message}}</span><br>
-                            <span class="dark item-text-wrap data">{{chat.date}}</span>
+                            <span class="msgRecebida item-text-wrap">{{chat.message}}</span><br>
+                            <span class="msgRecebidaData item-text-wrap">{{chat.date}}</span>
                         </p>
                     </div>
                     <div ng-if="chat.from !== username && chat.message" class="chatMessage">
@@ -27,6 +27,6 @@
         <label class="item-input-wrapper">
             <input type="text" ng-model="textMessage" placeholder="Escreva sua mensagem...">
         </label>
-        <button ng-click="sendMessage(textMessage)" class="button button-outline button-positive">Enviar</button>
+        <button ng-click="sendMessage(textMessage)" class="sendMessage"><i class="ion-android-send"></i></button>
     </div>
 </ion-view>

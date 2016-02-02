@@ -1,25 +1,18 @@
 <ion-view hide-nav-bar="true">
 	<ion-content overflow-scroll="false">
-		<div class="list-div">
-			<div class="config list">
-				<p>{{user.nome}}</p>		
+		<div class="list">
+			<div class="frameAcc">
+				<p>Detalhes da conta:</p>
+				<label class="item item-input">
+    				<i class="icon ion-person placeholder-icon"></i>
+    				<input type="text" value="{{user.nome}}">
+  				</label>
+				<label class="item item-input">
+    				<i class="icon ion-person placeholder-icon"></i>
+    				<input type="text" value="{{user.telefone}}">
+  				</label>	
 			</div>
-			<div class="config list">
-				<p>{{user.telefone}}</p>			
-			</div>
-			<div class="config list">
-				<p>Posição Atual {{user.location}}</p>		
-			</div>
+			<input type="submit" ng-click="logout()" value="Sair" class="buttonLogout">
 		</div>				
-		<div class="list list-inset">
-<!-- 		<button class="button button-assertive" ng-click="getLocation()">Pegar localização</button>
-			<button ng-click="modificarInfo(locationSelected, _telefone); _telefone = '';">Salvar</button> 
-			<button class="button button-dark" ng-click="logout()">Logout</button> -->
-		</div>
-
-        <!-- Essa div só será carregada/mostrada se o usuario for um técnico -->
-        <div ng-show="user.tecnico == true">
-            <h2>Este usuario é um técnico, implementar aqui alguma funcionalidade especifica do tecnico como: Descrição, telefone, atualizar localização, ver reputação...</h2>
-        </div>
 	</ion-content>
 </ion-view>

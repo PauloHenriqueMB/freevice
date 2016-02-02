@@ -6,16 +6,90 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
     var userLocation;
     
     function initMap(){
+
         var options = {timeout: 10000, enableHighAccuracy: true};
-        
+
         $cordovaGeolocation.getCurrentPosition(options).then(function(position){
             var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+            var style = [{
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road",
+                    "stylers": [{
+                    "visibility": "on"
+                }, {
+                    "color": "#ffffff"
+                }]
+            }, {
+                "featureType": "road.arterial",
+                    "stylers": [{
+                    "visibility": "on"
+                }, {
+                    "color": "#fee379"
+                }]
+            }, {
+                "featureType": "road.highway",
+                    "stylers": [{
+                    "visibility": "on"
+                }, {
+                    "color": "#fee379"
+                }]
+            }, {
+                "featureType": "landscape",
+                    "stylers": [{
+                    "visibility": "on"
+                }, {
+                    "color": "#f3f4f4"
+                }]
+            }, {
+                "featureType": "water",
+                    "stylers": [{
+                    "visibility": "on"
+                }, {
+                    "color": "#7fc8ed"
+                }]
+            }, {}, {
+                "featureType": "road",
+                    "elementType": "labels",
+                    "stylers": [{
+                    "visibility": "on"
+                }]
+            }, {
+                "featureType": "poi.park",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                    "visibility": "on"
+                }, {
+                    "color": "#83cead"
+                }]
+            }, {
+                "elementType": "labels",
+                    "stylers": [{
+                    "visibility": "on"
+                }]
+            }, {
+                "featureType": "landscape.man_made",
+                    "elementType": "geometry",
+                    "stylers": [{
+                    "weight": 0.9
+                }, {
+                    "visibility": "off"
+                }]
+            }]
             var mapOptions = {
-              center: latlng,
-              maxZoom:18,
-              minZoom:15,
-              zoom: 15,
-              mapTypeId: google.maps.MapTypeId.ROADMAP  
+                center: latlng,
+                maxZoom:50,
+                minZoom:15,
+                zoom: 15,
+                styles: style,
+                disableDefaultUI: true,
+                scaleControl: true,
+                zoomControl: true,
+                streetViewControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             
             userLocation = {lat: position.coords.latitude, lng: position.coords.longitude};

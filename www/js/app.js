@@ -17,6 +17,7 @@ App.run(function($ionicPlatform, GoogleMaps) {
 });
 
 App.config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
+
   $stateProvider
     .state('tab', {
       url: '/tab',
@@ -62,6 +63,7 @@ App.config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
     })
   $urlRouterProvider.otherwise('/login');
   $ionicConfigProvider.views.maxCache(0);
+  $ionicConfigProvider.tabs.position("top");
 
    if(ionic.Platform.isAndroid())
       $ionicConfigProvider.scrolling.jsScrolling(true);
