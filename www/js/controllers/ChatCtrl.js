@@ -1,7 +1,7 @@
 var app = angular.module('freevice');
 
 app.controller('ChatCtrl', function($scope, $firebase, $user, Alerta, Worker, $state, $firebaseObject){
-  $scope.nome = $user.get('userData.nome');
+  	$scope.nome = $user.get('userData.nome');
 	$scope.profilePic = $user.get('userData.foto');
 	$scope.userId = $user.get('userData.id');
 
@@ -16,7 +16,11 @@ app.controller('ChatCtrl', function($scope, $firebase, $user, Alerta, Worker, $s
 	obj.$bindTo($scope, 'chatMessages');
 
 	$scope.selectChat = function(user){
+		
 		Worker.selectWorker(user);
+		console.log('Selected worker: ');
+		console.log(user);
+
 		$state.go('chat-detail', {
 			chatId: user.id
 		});

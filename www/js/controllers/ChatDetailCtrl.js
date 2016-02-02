@@ -67,7 +67,7 @@ app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $fir
 			chatInfo.update({
 				id: worker.id,
 				name: worker.name,
-				foto: worker.photo,
+				foto: worker.foto,
 				lmessage: msg,
 				date: date
 			});
