@@ -80,6 +80,7 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
                 }]
             }]
             var mapOptions = {
+<<<<<<< HEAD
                 center: latlng,
                 maxZoom:50,
                 minZoom:15,
@@ -90,6 +91,13 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
                 zoomControl: true,
                 streetViewControl: true,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
+=======
+              center: latlng,
+              maxZoom:18,
+              minZoom:5,
+              zoom: 15,
+              mapTypeId: google.maps.MapTypeId.ROADMAP  
+>>>>>>> 405e7770996e1fd8593bb5a11dd794c6d660b259
             };
             
             userLocation = {lat: position.coords.latitude, lng: position.coords.longitude};
@@ -126,7 +134,7 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
         
         if(map != null || map != undefined){
             createUserMarker(location);
-            ref.orderByChild('city').equalTo(city).on('child_added', function(data){
+            ref.orderByChild('city')/*.equalTo(city)*/.on('child_added', function(data){
                 var obj = data.val();
                 console.log(obj);
                 marker = Marker.createMarker(obj, map); 
