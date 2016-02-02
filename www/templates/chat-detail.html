@@ -7,10 +7,8 @@
                 <div class="item item-chat" ng-repeat="chat in chats">
                     <div ng-if="chat.from === username && chat.message" class="chatMessageFromMe">
                         <p>
-                            <span class="msgRecebida item-text-wrap">{{chat.message}}</span><br>
-                            <span class="msgRecebidaData item-text-wrap">{{chat.date}}</span>
-                            <span class="dark item-text-wrap">{{chat.message}}</span><br>
-                            <span class="dark item-text-wrap data">{{chat.date | calendar}}</span>
+                            <span class="light item-text-wrap">{{chat.message}}</span><br>
+                            <span class="stable item-text-wrap data">{{chat.date | calendar}}</span>
                         </p>
                     </div>
                     <div ng-if="chat.from !== username && chat.message" class="chatMessage">
