@@ -80,7 +80,6 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
                 }]
             }]
             var mapOptions = {
-<<<<<<< HEAD
                 center: latlng,
                 maxZoom:50,
                 minZoom:15,
@@ -90,14 +89,12 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
                 scaleControl: true,
                 zoomControl: true,
                 streetViewControl: true,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-=======
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
               center: latlng,
               maxZoom:18,
               minZoom:5,
               zoom: 15,
               mapTypeId: google.maps.MapTypeId.ROADMAP  
->>>>>>> 405e7770996e1fd8593bb5a11dd794c6d660b259
             };
             
             userLocation = {lat: position.coords.latitude, lng: position.coords.longitude};
