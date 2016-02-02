@@ -13,7 +13,7 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
             var mapOptions = {
               center: latlng,
               maxZoom:18,
-              minZoom:15,
+              minZoom:5,
               zoom: 15,
               mapTypeId: google.maps.MapTypeId.ROADMAP  
             };
@@ -52,7 +52,7 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
         
         if(map != null || map != undefined){
             createUserMarker(location);
-            ref.orderByChild('city').equalTo(city).on('child_added', function(data){
+            ref.orderByChild('city')/*.equalTo(city)*/.on('child_added', function(data){
                 var obj = data.val();
                 console.log(obj);
                 marker = Marker.createMarker(obj, map); 
