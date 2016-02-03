@@ -1,6 +1,6 @@
-var App = angular.module('freevice', ['ionic', 'firebase', 'ngCordova', 'angularMoment']);
+var App = angular.module('freevice', ['ionic','ionic.service.core', 'firebase', 'ngCordova', 'angularMoment']);
 
-App.run(function($ionicPlatform, GoogleMaps) {
+App.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -12,12 +12,38 @@ App.run(function($ionicPlatform, GoogleMaps) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
-    //GoogleMaps.init();
+
+    var io = Ionic.io();
+    var push = new Ionic.Push({
+      "onNotification": function(notification){
+        alert('Received Notification!');
+      },
+      "pluginConfig":{
+        "android": {
+          "iconColor": "#00ccff"
+        }
+      }
+    });
+
+    var user = Ionic.User.current();
+    if(!user.id){
+      user.id = Ionic.User.anonymousId();
+    }
+
+    user.set('name', 'Amilson');
+    user.set('bio', 'This is my little bio');
+    user.save();
+
+    var callback = function(){
+      push.addTokenToUser(user);
+      user.save();
+    };
+
+    push.register(callback);
   });
 });
 
 App.config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
-
   $stateProvider
     .state('tab', {
       url: '/tab',

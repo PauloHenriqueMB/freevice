@@ -4,8 +4,8 @@
         <div ng-repeat="chat in chatMessages" ng-show="chat">
           <div class="item item-avatar" ng-click="selectChat(chat.chatInfo)" ng-show="chat.chatInfo.name != username">
             <img src="{{chat.chatInfo.foto}}">
-            <p class="username">{{chat.chatInfo.name}} <span class="data">24/12/2015</span></p>
-            <p class="usermsg">{{chat.chatInfo.lmessage}}</p>
+            <p class="username">{{chat.chatInfo.name}} <span class="data">{{chat.chatInfo.date | calendar}}</span></p>
+            <p class="usermsg" >{{chat.chatInfo.lmessage}}</p>
           </div>
         </div>
       </div>

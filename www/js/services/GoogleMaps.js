@@ -78,7 +78,8 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
                 }, {
                     "visibility": "off"
                 }]
-            }]
+            }];
+            
             var mapOptions = {
                 center: latlng,
                 maxZoom:50,
@@ -90,11 +91,11 @@ app.factory('GoogleMaps', function($cordovaGeolocation, GeoCoder, $firebase, Mar
                 zoomControl: true,
                 streetViewControl: true,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-              center: latlng,
-              maxZoom:18,
-              minZoom:5,
-              zoom: 15,
-              mapTypeId: google.maps.MapTypeId.ROADMAP  
+                center: latlng,
+                maxZoom:18,
+                minZoom:5,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP  
             };
             
             userLocation = {lat: position.coords.latitude, lng: position.coords.longitude};

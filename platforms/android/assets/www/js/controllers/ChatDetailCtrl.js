@@ -1,19 +1,17 @@
-angular
-	.module('freevice')
+var app = angular.module('freevice');
 
-.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $firebaseObject, $timeout, $stateParams, $ionicScrollDelegate){
-  var ref = new Firebase('https://desk-solution.firebaseio.com/chats');
-	var userId = $user.get('userData.id');
-	var chatId = $stateParams.chatId;
+app.controller('ChatDetailCtrl', function($scope, $user, $firebase, Worker, $firebaseObject, $timeout, $stateParams, $ionicScrollDelegate){
+    var ref      = new Firebase('https://desk-solution.firebaseio.com/chats');
+	var userId   = $user.get('userData.id');
+	var chatId   = $stateParams.chatId;
 	var userName = $user.get('userData.nome');
 	var userFoto = $user.get('userData.foto');
-	var tecnico = Worker.getSelectedTecnico();
-
+	
 	$scope.isTecnico = $user.get('userData.userType');
-	$scope.username = userName;
-	$scope.user_chat_name = tecnico.name;
-
-	console.log('sou um tecnico? ' + $scope.isTecnico);
+	$scope.username  = userName;
+	
+	var worker = Worker.getSelectedWorker();
+	$scope.user_chat_name = worker.name;
 
 	var chatInfo = ref.child(userId).child($stateParams.chatId).child('chatInfo');
 	var chatInfo2 = ref.child($stateParams.chatId).child(userId).child('chatInfo');
@@ -29,45 +27,62 @@ angular
 		});
 	});
 
+	var msglimit = 15;
+
 	/* recebe mensagens em tempo real. */
-	var syncObject = $firebaseObject(sync);
+	var syncObject = $firebaseObject(sync.limitToLast(msglimit));
 	syncObject.$bindTo($scope, 'chats');
 
-	var ref = new Firebase('https://desk-solution.firebaseio.com/users/' + 'facebook:' + chatId);
+	$scope.doRefresh = function(){
+		msglimit += 15;
+		syncObject = $firebaseObject(sync.limitToLast(msglimit));
+		syncObject.$bindTo($scope, 'chats');
+
+		$scope.$broadcast('scroll.refreshComplete');
+    	$scope.$apply();
+	}
 
 	$scope.sendMessage = function(msg){
+        var now = new Date();
+        var date = now.toString();
+        
 		if(msg){
 			sync.push({
 				from: userName,
 				to: chatId,
 				message: msg,
-				foto: userFoto
+				date: date
 			});
-
+		
 			sync2.push({
 				from: userName,
 				to: chatId,
 				message: msg,
-				foto: userFoto
+				date: date
 			});
 
+			console.log(worker);
+		  
+            //Last message
 			chatInfo.update({
-				id: tecnico.id,
-				name: tecnico.name,
-				foto: tecnico.foto,
-				lmessage: msg
+				id: worker.id,
+				name: worker.name,
+				foto: worker.foto,
+				lmessage: msg,
+				date: date
 			});
-
+		
 			chatInfo2.update({
 				id: userId,
 				name: userName,
 				foto: userFoto,
-				lmessage: msg
+				lmessage: msg,
+				date: date
 			});
-
+		
 			delete $scope.textMessage;
 		}
-
+		
 		$timeout(function() {
 		    $ionicScrollDelegate.scrollBottom();
 		});

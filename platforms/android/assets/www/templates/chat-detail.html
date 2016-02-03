@@ -1,22 +1,20 @@
-<ion-view view-title="<a href='#/tab/chat'><button class='buttonBack button button-icon icon ion-arrow-left-c'></button></a> {{user_chat_name}}">
-    <ion-content overflow-scroll="false">
+<ion-view view-title="{{user_chat_name}}" class="chat-interno">
+    <ion-content>
+        <ion-refresher pulling-text="Mensagens antigas" on-refresh="doRefresh()" class="refresh">
+        </ion-refresher>
         <ion-list>
             <div class="chat-detail">
                 <div class="item item-chat" ng-repeat="chat in chats">
                     <div ng-if="chat.from === username && chat.message" class="chatMessageFromMe">
-                        <h4>
-                            <span class="dark item-text-wrap" ng-if="chat.from">Eu</span>
-                        </h4>
                         <p>
-                            <span class="dark item-text-wrap">{{chat.message}}</span>
+                            <span class="light item-text-wrap">{{chat.message}}</span><br>
+                            <span class="stable item-text-wrap data">{{chat.date | calendar}}</span>
                         </p>
                     </div>
                     <div ng-if="chat.from !== username && chat.message" class="chatMessage">
-                        <h4>
-                            <span class="dark item-text-wrap" ng-if="chat.from">{{chat.from}}</span>
-                        </h4>
                         <p>
-                            <span class="dark item-text-wrap" ng-if="chat.message">{{chat.message}}</span>
+                            <span class="dark item-text-wrap" ng-if="chat.message">{{chat.message}}</span><br>
+                            <span class="dark item-text-wrap data">{{chat.date | calendar}}</span>
                         </p>
                     </div>
                 </div>
@@ -29,6 +27,6 @@
         <label class="item-input-wrapper">
             <input type="text" ng-model="textMessage" placeholder="Escreva sua mensagem...">
         </label>
-        <button ng-click="sendMessage(textMessage)" class="button button-icon icon ion-forward"></button>
+        <button ng-click="sendMessage(textMessage)" class="sendMessage"><i class="ion-android-send"></i></button>
     </div>
 </ion-view>

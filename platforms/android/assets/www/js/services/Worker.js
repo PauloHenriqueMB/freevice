@@ -2,28 +2,28 @@ var app = angular.module('freevice');
 
 app.factory('Worker', function($firebase, $state, $ionicPopup){
   var ref = new Firebase('https://desk-solution.firebaseio.com/users');
-  var tecnicos = [];
-  var selectedTecnico = {};
+  var workers = [];
+  var selectedWorker = {};
   
   return{
-    setTecnicos: function(data){ tecnicos = data; },
-      getTecnicos: function(){
-        tecnicos = [];
+    setWorkers: function(data){ workers = data; },
+      getWorkers: function(){
+        workers = [];
         ref.on('value', function(data){
-          var _tecnicos = data.val();
+          var _workers = data.val();
 
-          for(var x in _tecnicos){
+          for(var x in _workers){
             if(x.tecnico)
-              tecnicos.push(_tecnicos[x]);
+              workers.push(_workers[x]);
           }
 
-          console.log(tecnicos);
+          console.log(workers);
         }, function(error){
           console.log('Failed to read data: ' + error);
         });
-        return tecnicos;
+        return workers;
       },
-      setSelectedTecnico: function(tecnico){ selectedTecnico = tecnico; },
+      selectWorker: function(worker){ selectedWorker = worker; },
       getDataById: function(id){
         var facebookID = 'facebook:' + id;
 
@@ -33,7 +33,6 @@ app.factory('Worker', function($firebase, $state, $ionicPopup){
            return data.name;
         });
       },
-      getSelectedTecnico: function(){ return selectedTecnico; },
-      Tecnicos: tecnicos
+      getSelectedWorker: function(){ return selectedWorker; }
   }
 });

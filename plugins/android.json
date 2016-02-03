@@ -30,6 +30,9 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.freevice691196"
+        },
+        "phonegap-plugin-push": {
+            "PACKAGE_NAME": "com.ionicframework.freevice691196"
         }
     },
     "dependent_plugins": {}
