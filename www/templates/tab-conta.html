@@ -1,18 +1,9 @@
 <ion-view hide-nav-bar="true">
 	<ion-content overflow-scroll="false">
-		<div class="list">
-			<div class="frameAcc">
-				<p>Detalhes da conta:</p>
-				<label class="item item-input">
-    				<i class="icon ion-person placeholder-icon"></i>
-    				<input type="text" value="{{user.nome}}">
-  				</label>
-				<label class="item item-input">
-    				<i class="icon ion-person placeholder-icon"></i>
-    				<input type="text" value="{{user.telefone}}">
-  				</label>	
-			</div>
-			<input type="submit" ng-click="logout()" value="Sair" class="buttonLogout">
-		</div>				
+		<div class="list perfil">
+			<img class="avatar" src="{{user.foto}}">
+			<p class="nome">{{user.nome}}</p>
+		</div>
+		<button class="logout">Desconectar</button>				
 	</ion-content>
 </ion-view>
