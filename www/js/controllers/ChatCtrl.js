@@ -16,7 +16,6 @@ app.controller('ChatCtrl', function($scope, $firebase, $user, Alerta, Worker, $s
 	obj.$bindTo($scope, 'chatMessages');
 
 	$scope.selectChat = function(user){
-		
 		Worker.selectWorker(user);
 		console.log('Selected worker: ');
 		console.log(user);
